@@ -14,6 +14,20 @@
   through an 18-gate falsification pipeline.
 </p>
 
+<p align="center">
+  <img src="assets/dashboard.png" alt="BurnTheLies Intelligence Dashboard" width="800">
+</p>
+
+---
+
+## See It In Action
+
+<p align="center">
+  <video src="assets/dashboard-demo.mp4" controls width="800"></video>
+</p>
+
+The dashboard shows narrative clusters ranked by NVI (Narrative Velocity Index), with alert levels, evidence packs, and cross-narrative campaign detection. Each cluster can be expanded to reveal source diversity, language spread, gate reasoning, and individual post timelines.
+
 ---
 
 ## What This Actually Does
@@ -143,6 +157,64 @@ Boost gates can override caps. A 12-domain, 113-DNA-match cluster capped by insu
 
 ---
 
+## Evidence Pack: Berkeley Protocol Compliance
+
+Every alert that clears the falsification pipeline can be exported as a **Berkeley Protocol evidence pack** — a machine-readable, human-auditable document that preserves chain of custody for open-source investigations.
+
+**[Sample Evidence Pack →](assets/evidence-pack-39018.json)** (real detection, May 2026)
+
+```json
+{
+  "metadata": {
+    "pack_version": "4.0.0",
+    "standard": "Berkeley Protocol on Digital Open Source Investigations (2022)",
+    "pack_id": "EP-39018-20260507094218"
+  },
+  "falsification_assessment": {
+    "criteria": [
+      {"description": "Content mutation + source diversity (organic viral)", "triggered": false},
+      {"description": "Coordination multiplier + burst (normal news cycle)", "triggered": true},
+      {"description": "Wire service syndication check", "triggered": false},
+      {"description": "Post count < 10 (insufficient evidence)", "triggered": false}
+    ],
+    "verdict": "COORDINATION POSSIBLE"
+  },
+  "chain_of_custody": {
+    "ingestion": { "source_apis": ["GDELT GKG v2", "GDELT DOC 2.0", "Bluesky Jetstream"] },
+    "processing": {
+      "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "clustering_method": "Multi-resolution UMAP → HDBSCAN with cross-resolution validation",
+      "dna_fingerprinting": "84-dim multi-modal: stylometric(32) + cadence(16) + network(12) + entity_bias(24)"
+    }
+  },
+  "narrative": {
+    "label": "mike bush — australian border — Recruitment",
+    "post_count": 24,
+    "sources": 18,
+    "language_spread": {"en": 24}
+  },
+  "interpretation": {
+    "confidence_interval": {"probability": 0.671, "sample_adequacy": "moderate"},
+    "alternative_hypotheses": [
+      "Wire service distribution — could be syndication",
+      "Niche topic — concentrated sources may be organic"
+    ]
+  }
+}
+```
+
+**What makes this evidence-admissible:**
+- **Complete chain of custody** — every post has source API, ingestion timestamp, content hash (SHA256)
+- **Falsification-first methodology** — the system tries to disprove coordination before flagging it
+- **Alternative hypotheses** — every pack includes competing explanations with their likelihood
+- **Confidence intervals** — not binary yes/no, but probabilistic with quantified uncertainty
+- **Source credibility weighting** — each source is scored; unknown sources are flagged
+- **No LLM generation** — all interpretation is deterministic rule-based, not AI-hallucinated
+
+The full pack includes per-post metadata, entity extraction, DNA fingerprint matches, NVI timeline, and source credibility breakdowns — everything a human investigator needs to verify or refute the finding.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -247,22 +319,33 @@ Weighted cosine similarity ≥0.75 = same operator fingerprint. High-confidence 
 
 ## Honest Limitations
 
+We disclose these because credibility matters more than marketing.
+
 **What this system CAN do:**
 - Find stories spreading unusually fast across many unrelated outlets
 - Detect multilingual narratives (same story in 3+ languages simultaneously)
 - Flag off-hours publishing patterns (1–5 AM UTC with high source diversity)
-- Identify wire-service rewrites and exclude them
+- Identify wire-service rewrites and exclude them automatically
 - Match operator fingerprints across clusters via 84-dim DNA
+- Export Berkeley Protocol-compliant evidence packs with full chain of custody
 
 **What this system CANNOT do:**
-- Prove coordination. Only a human investigation can do that.
-- Determine *intent*. It measures velocity, not motivation.
-- Identify individual actors. DNA fingerprints are statistical, not forensic.
-- Replace journalism. It's a signal surface tool, not a truth machine.
+- **Prove coordination.** Only a human investigation using corroborating evidence can do that.
+- **Determine intent.** It measures velocity and structural patterns, not motivation.
+- **Identify individual actors.** DNA fingerprints are statistical correlations, not forensic identification.
+- **Replace journalism.** It is a signal surface tool for investigative leads, not a truth machine.
+- **Detect private coordination.** Encrypted channels, private groups, and offline coordination are invisible.
 
-**False positives are expected.** The system is tuned to favor surfacing interesting patterns over silence. Approximately 10% of clusters will be "elevated" and ~0.4% "critical." Many will be legitimate breaking news with organic velocity. That's intentional — it's better to flag a real story than to miss a campaign.
+**Known failure modes:**
+- **Wire service amplification.** AP/Reuters/AFP syndication can produce identical content across hundreds of outlets — indistinguishable from coordination by metrics alone. We filter known wire domains, but regional syndicators occasionally slip through.
+- **Domain-based cluster bags.** HDBSCAN sometimes groups articles by source domain rather than narrative content. We detect and suppress these via Jaccard-based topic-bag gates, but clusters with 60%+ single-source concentration may still appear if title similarity is borderline.
+- **Language detection gaps.** GDELT assigns `language="unknown"` to .com/.org/.net TLDs. We use per-title langdetect as a fallback, but short titles and Latin-script non-English text occasionally evade detection.
+- **Temporal ambiguity.** GDELT batch timestamps have 15-minute granularity. True sub-minute coordination timing is invisible at this resolution.
+- **Cold-start period.** A fresh database has no baseline. The first 12–24 hours of operation produce higher false-positive rates as the system calibrates.
 
-**The engine is only as good as its source data.** GDELT GKG has limitations: machine-translated titles, noisy entity extraction, numeric location IDs rather than country codes. We work within these constraints honestly.
+**False positives are expected and by design.** The system is tuned to favor surfacing over silence. In a mature baseline, approximately 5–10% of clusters are "elevated" and <1% "critical." Many elevated clusters will be legitimate breaking news with organic velocity — not coordination. That is intentional. A false positive costs an analyst 5 minutes. A false negative costs a story that stays buried.
+
+**The engine is only as good as its source data.** GDELT GKG has inherent limitations: machine-translated titles introduce lexical artifacts, automated entity extraction produces noise, and numeric location IDs require secondary resolution to country names. We document these constraints rather than hiding them.
 
 ---
 
@@ -283,7 +366,7 @@ Weighted cosine similarity ≥0.75 = same operator fingerprint. High-confidence 
 
 ## License
 
-MIT — use it, fork it, learn from it, cite it.
+MIT — use it, fork it, learn from it, cite it. If this code helps you surface a story that needed telling, that's what it's for.
 
 Built as part of the [BurnTheLies](https://github.com/vabhavx/burn) investigative journalism platform.
 
@@ -291,4 +374,12 @@ Built as part of the [BurnTheLies](https://github.com/vabhavx/burn) investigativ
 
 <p align="center">
   <sub>We publish what others won't. We go where most won't follow.</sub>
+</p>
+
+<p align="center">
+  <sub>
+    <a href="assets/evidence-pack-39018.json">Sample Evidence Pack</a> ·
+    <a href="assets/dashboard-demo.mp4">Demo Video</a> ·
+    <a href="ARCHITECTURE.md">Architecture Deep Dive</a>
+  </sub>
 </p>

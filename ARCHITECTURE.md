@@ -221,13 +221,15 @@ After clustering, cross-resolution deduplication merges overlapping clusters usi
 
 ### Label Generation
 
-Cluster labels are generated from actual article titles, not AI-generated summaries:
-1. Extract all post titles in the cluster
-2. Clean wire suffixes ("Title | Source Name" → "Title")
-3. Find the most common cleaned title (dominant headline)
-4. Fall back to GDELT entity metadata if no titles exist
+Cluster labels are generated from actual article titles through a multi-strategy cascade — never AI-generated:
 
-This is an authenticity guarantee: the label you see is what the sources actually said.
+1. **Strategy 0: DB-stored label.** If the clustering step produced a label that looks like a real headline (has function words, mixed case, not all-titlecase theme codes) AND passes langdetect English verification, use it directly.
+2. **Strategy 1: Post titles.** Extract all post titles for the cluster, filter to the dominant language using langdetect, clean wire suffixes ("Title | Source Name" → "Title"), and select the most representative headline.
+3. **Strategy 2: Themes.** GDELT-assigned thematic categories, deduplicated and cleaned.
+4. **Strategy 3: Keywords.** Aggregated entity keywords from cluster members.
+5. **Strategy 4: Generic.** "Untitled Cluster #N" — honest about not knowing.
+
+This is an authenticity guarantee: the label you see is what the sources actually said, not what an LLM thinks they might have said.
 
 ---
 
@@ -289,6 +291,39 @@ GET  /api/health                      — Liveness check
 The narratives endpoint supports filtering: `min_post_count`, `alert_level`, `language`, `region`, `category`, `source`. English feed includes "unknown" language articles since GDELT TLD-based language detection labels many English-language sites as "unknown."
 
 Evidence packs include: full gate trace (which gates fired and why), NVI component breakdown, ensemble disagreement, DNA match evidence, anomaly signals, and falsification criteria. Everything is traceable to source data.
+
+### Evidence Pack Format (Berkeley Protocol)
+
+Evidence packs conform to the [Berkeley Protocol on Digital Open Source Investigations](https://www.ohchr.org/en/publications/policy-and-methodological-publications/berkeley-protocol-digital-open-source) (OHCHR, 2022). Each pack is a standalone JSON document containing:
+
+```
+EP-{cluster_id}-{timestamp}.json
+├── metadata            — Pack version, generator, protocol standard, pack ID
+├── alert_status        — Whether the alert was suppressed and why
+├── falsification_assessment
+│   ├── criteria[]      — Each falsification gate with triggered/not + current values
+│   └── verdict         — "COORDINATION POSSIBLE" or "FALSIFIED"
+├── narrative           — Label, keywords, post count, source diversity, languages
+├── chain_of_custody
+│   ├── ingestion       — Source APIs, dedup method, data retention
+│   ├── processing      — Embedding model, clustering method, NVI formula, DNA specs
+│   └── analysis        — Coordination detection method, confidence method
+├── methodology         — Detection method description and known limitations
+├── interpretation
+│   ├── confidence_interval   — Probability, bounds, sample adequacy
+│   ├── alternative_hypotheses[] — Competing explanations (honest about uncertainty)
+│   └── source_credibility     — Weighted credibility, category breakdown
+├── nvi_timeline[]      — NVI values over time (empty for one-shot clusters)
+└── evidence
+    └── posts[]         — Per-post: ID, source, URL, title, timestamp, language, content hash
+```
+
+**Key design decisions:**
+- **No LLM-generated text.** All interpretation is deterministic rule-based output. An investigator can trace every statement to its source signal.
+- **Alternative hypotheses are mandatory.** Every pack includes competing explanations — wire syndication, niche topic, organic virality — with their supporting evidence. This prevents confirmation bias.
+- **Confidence is probabilistic, not binary.** The system reports probability with bounds, not yes/no. "0.67 probability of coordination" is more honest than "COORDINATED."
+- **Content hashes provide tamper evidence.** Every post has a SHA256 content hash. An investigator can verify the article hasn't changed since ingestion.
+- **Sample adequacy is explicitly rated.** "Moderate" means the finding is suggestive, not conclusive. This prevents overclaiming on thin evidence.
 
 ---
 

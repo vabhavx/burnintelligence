@@ -1,0 +1,454 @@
+{
+  "metadata": {
+    "pack_version": "4.0.0",
+    "generator": "BurnTheLies Intelligence Engine",
+    "generated_at": "2026-05-07T09:42:18.014055+00:00",
+    "standard": "Berkeley Protocol on Digital Open Source Investigations (2022)",
+    "cluster_id": 39018,
+    "pack_id": "EP-39018-20260507094218"
+  },
+  "alert_status": {
+    "suppressed": false,
+    "reason": null,
+    "gates_triggered": [],
+    "gate_reasoning": {},
+    "message": "Alert passed confidence gate."
+  },
+  "falsification_assessment": {
+    "criteria": [
+      {
+        "id": 1,
+        "description": "Content mutation > 0.30 AND source diversity > 0.60 (organic viral spread)",
+        "triggered": false,
+        "current_values": {
+          "mutation": 0,
+          "source_diversity": 0
+        }
+      },
+      {
+        "id": 2,
+        "description": "Coordination multiplier < 1.1 AND burst < 5 (normal news cycle)",
+        "triggered": true,
+        "current_values": {
+          "coordination_mult": 0,
+          "burst": 0
+        }
+      },
+      {
+        "id": 3,
+        "description": "Majority of sources are established wire services (syndication, not coordination)",
+        "triggered": false,
+        "current_values": {
+          "wire_service_syndication": false
+        }
+      },
+      {
+        "id": 4,
+        "description": "Post count < 10 (insufficient evidence)",
+        "triggered": false,
+        "current_values": {
+          "post_count": 24
+        }
+      }
+    ],
+    "verdict": "COORDINATION POSSIBLE",
+    "suppression_reason": null
+  },
+  "narrative": {
+    "label": "mike bush — australian border — Recruitment",
+    "keywords": [
+      "australian",
+      "mike",
+      "bush",
+      "recruitment",
+      "fear",
+      "organized",
+      "crime",
+      "police"
+    ],
+    "summary": null,
+    "first_seen": "2026-05-07T09:31:53.395113+00:00",
+    "last_updated": "2026-05-07T09:31:53.395113+00:00",
+    "post_count": 24,
+    "source_diversity": 0,
+    "language_spread": {
+      "en": 24
+    },
+    "latest_nvi": null
+  },
+  "chain_of_custody": {
+    "ingestion": {
+      "source_apis": [
+        "GDELT GKG v2 (15-minute updates)",
+        "GDELT DOC 2.0 API",
+        "Bluesky Jetstream (AT Protocol)"
+      ],
+      "ingestion_method": "Automated pipeline with content_hash deduplication (SHA256)",
+      "data_retention": "All raw posts preserved with original timestamps and metadata"
+    },
+    "processing": {
+      "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 (50M params, 384-dim)",
+      "clustering_method": "Multi-resolution UMAP(n_components=5, metric=cosine) → HDBSCAN(min_cluster_size=[3,5,10,25], method=eom) with cross-resolution validation",
+      "nvi_formula": "Ensemble NVI v4.1: 3 parallel coefficient sets (burst-heavy, spread-heavy, mutation-heavy) with weighted consensus. Hard gates for wire service syndication, topic clusters, and GDELT batch artifacts. Confidence-gated alerting with DNA match evidence.",
+      "nvi_weights": {
+        "ensemble_burst_heavy": {
+          "alpha": 0.35,
+          "beta": 0.2,
+          "gamma": 0.15,
+          "delta": 0.2
+        },
+        "ensemble_spread_heavy": {
+          "alpha": 0.2,
+          "beta": 0.35,
+          "gamma": 0.15,
+          "delta": 0.2
+        },
+        "ensemble_mutation_heavy": {
+          "alpha": 0.25,
+          "beta": 0.25,
+          "gamma": 0.2,
+          "delta": 0.2
+        }
+      },
+      "additional_signals": [
+        "gdelt_batch_artifact_detection",
+        "dna_fingerprint_cross_matching",
+        "entity_concentration_gate",
+        "ensemble_red_flag_detection"
+      ],
+      "dna_fingerprinting": "84-dim multi-modal: stylometric(32) + cadence(16) + network_topology(12) + entity_bias(24)",
+      "graph_analysis": "Directed source amplification graph with topology metrics",
+      "scoring_timestamp": "2026-05-07T09:42:18.014055+00:00"
+    },
+    "analysis": {
+      "coordination_detection": "Temporal synchrony (inter-arrival CoV with GDELT batch artifact detection), content identity (embedding variance), source concentration (Shannon entropy with actual domain extraction), tone uniformity (sentiment variance), entity concentration (named entity overlap), DNA fingerprint matching (84-dim multi-modal cosine similarity)",
+      "confidence_method": "Deterministic signal-strength aggregation with ensemble cross-validation and sample-size penalties",
+      "interpretation_method": "Threshold-based rule engine, no ML or LLM generation",
+      "dna_matching": "Weighted cosine similarity across 4 modalities. Threshold >= 0.75 = same operator."
+    }
+  },
+  "methodology": {
+    "detection_method": "Statistical anomaly detection across four dimensions: publication timing regularity (coefficient of variation of inter-arrival times), content similarity (embedding centroid variance), source ecosystem diversity (Shannon entropy), and emotional framing uniformity (sentiment variance). Signals are combined via a weighted sigmoid function and multiplied by a coordination factor.",
+    "limitations": [
+      "Cannot distinguish intentional coordination from coincidental alignment",
+      "Wire service (AP/Reuters/AFP) distribution produces identical content that mimics coordination signals",
+      "Small sample sizes (<15 posts) significantly reduce confidence in all metrics",
+      "GDELT metadata may contain misattributed themes or persons from automated extraction",
+      "Bluesky data is limited to public posts; private coordination is invisible to this system",
+      "English-language content is overrepresented due to GDELT DOC API default query language",
+      "Temporal analysis assumes UTC timestamps; timezone misattribution can create false timing signals"
+    ]
+  },
+  "interpretation": {
+    "confidence_interval": {
+      "probability": 0.671,
+      "lower_bound": 0.534,
+      "upper_bound": 0.74,
+      "sample_adequacy": "moderate",
+      "limiting_factors": [
+        "Limited sample size",
+        "Low cross-platform diversity — mostly single source type",
+        "No DNA fingerprint matches — limited operational history evidence"
+      ],
+      "falsification_criteria_triggered": []
+    },
+    "alternative_hypotheses": [
+      "Wire service distribution: Low content variation is also consistent with AP/Reuters/AFP syndication, where many outlets publish the same wire copy.",
+      "Niche topic: Concentrated sources may simply mean this topic is only covered by specialized outlets, not that coverage is being suppressed or restricted."
+    ],
+    "source_credibility": {
+      "weighted_credibility": 0.5117,
+      "category_breakdown": {
+        "unknown": 23,
+        "major_editorial": 1
+      },
+      "source_count": 24
+    }
+  },
+  "nvi_timeline": [],
+  "evidence": {
+    "post_count": 24,
+    "posts": [
+      {
+        "post_id": "gdelt_gkg_c8ac8a3ed358f9e2",
+        "source": "gdelt_gkg",
+        "url": "https://www.dungogchronicle.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T12:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "c8ac8a3ed358f9e2237036e043df83bd3a2d74839c6f4b03ceacc37c8377d697"
+      },
+      {
+        "post_id": "gdelt_gkg_03a9b380ce91b3fc",
+        "source": "gdelt_gkg",
+        "url": "https://www.naroomanewsonline.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T12:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "03a9b380ce91b3fc04a6dfb0e9c64823e3369b66adbcea6ebc9ae3f16a81521d"
+      },
+      {
+        "post_id": "gdelt_gkg_b4cba5192fa988e4",
+        "source": "gdelt_gkg",
+        "url": "https://www.sconeadvocate.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T12:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "b4cba5192fa988e449c129f4563baa17ec27e78279fa627fba332eb780c17fe2"
+      },
+      {
+        "post_id": "gdelt_gkg_a7f817febf0a0d01",
+        "source": "gdelt_gkg",
+        "url": "https://www.merimbulanewsweekly.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T12:15:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "a7f817febf0a0d011579181f292f572f4c5fa042411a8cce8186533268f53edf"
+      },
+      {
+        "post_id": "gdelt_gkg_84ac24a9d6fd32e5",
+        "source": "gdelt_gkg",
+        "url": "https://www.hepburnadvocate.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T12:15:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "84ac24a9d6fd32e55341b83acbb18d682407f3fb8469f755cbf2db5fd65b9971"
+      },
+      {
+        "post_id": "gdelt_gkg_1db71cdfadfbc733",
+        "source": "gdelt_gkg",
+        "url": "https://www.theadvocate.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T12:15:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "1db71cdfadfbc73380fe5054dd9a3b4c66433eb352c4ab733feebd0d705f5578"
+      },
+      {
+        "post_id": "gdelt_gkg_f2f20fdd780538af",
+        "source": "gdelt_gkg",
+        "url": "https://www.redlandcitybulletin.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T12:15:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "f2f20fdd780538af10fb0d70a9151b71fdd5ed3dd4b7d843a0f99cff84c0335f"
+      },
+      {
+        "post_id": "gdelt_gkg_43195c27dbcf13ed",
+        "source": "gdelt_gkg",
+        "url": "https://www.yasstribune.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T11:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "43195c27dbcf13edae918010feb254caa9fc2eb8b694b7b07398359fa1bc8ac3"
+      },
+      {
+        "post_id": "gdelt_gkg_cf2179da526da504",
+        "source": "gdelt_gkg",
+        "url": "https://www.easternriverinachronicle.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T11:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "cf2179da526da5044e2e42ab9972dc75dabb32165e24782d7427217dfcac1bd3"
+      },
+      {
+        "post_id": "gdelt_gkg_5e93457fa3f3c9bb",
+        "source": "gdelt_gkg",
+        "url": "https://www.maitlandmercury.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T11:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "5e93457fa3f3c9bb25f642858f1dccb20cc8237993b4a18512272d3044ef8c46"
+      },
+      {
+        "post_id": "gdelt_gkg_da031fbdac7ad42e",
+        "source": "gdelt_gkg",
+        "url": "https://www.bendigoadvertiser.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T11:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 0.9773744690960149,
+        "content_hash": "da031fbdac7ad42efc24145331adc30c1477fac7eaae006cd3dc8e904af446e0"
+      },
+      {
+        "post_id": "gdelt_gkg_5041176d49cb40f1",
+        "source": "gdelt_gkg",
+        "url": "https://www.mandurahmail.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T11:15:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "5041176d49cb40f16a3404642c97ac787bcdb14f05aa0ae1944bd5e8e990b423"
+      },
+      {
+        "post_id": "gdelt_gkg_854343f355382893",
+        "source": "gdelt_gkg",
+        "url": "https://www.bluemountainsgazette.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T11:15:00+00:00",
+        "language": "en",
+        "cluster_confidence": 0.26655739061441247,
+        "content_hash": "854343f355382893da0cbf57d061209ff51f01a5f69eec184c4d339d384c1d98"
+      },
+      {
+        "post_id": "gdelt_gkg_340be38845bcab72",
+        "source": "gdelt_gkg",
+        "url": "https://www.northerndailyleader.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T11:15:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "340be38845bcab72a0356c1fb19fe8020308cfed28a68d4a5e886dc3eddcc42d"
+      },
+      {
+        "post_id": "gdelt_gkg_197656af41479eb1",
+        "source": "gdelt_gkg",
+        "url": "https://www.newcastleherald.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:45:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "197656af41479eb1874ecb348072a883b477999736784e3cd7a5d86488547f81"
+      },
+      {
+        "post_id": "gdelt_gkg_caa1b4ce9a5c3f11",
+        "source": "gdelt_gkg",
+        "url": "https://www.wellingtontimes.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:45:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "caa1b4ce9a5c3f118a1136544fc3d06ba7f1d1ff67bdc9312646887186fb1b49"
+      },
+      {
+        "post_id": "gdelt_gkg_2dc3abdf53ca88dc",
+        "source": "gdelt_gkg",
+        "url": "https://www.examiner.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:45:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "2dc3abdf53ca88dc1471b4b7d06df159a433fc85ee890320011fe9214a05c60d"
+      },
+      {
+        "post_id": "gdelt_gkg_33763688dccd2ae3",
+        "source": "gdelt_gkg",
+        "url": "https://www.armidaleexpress.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:45:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "33763688dccd2ae3fea73e6e3687def673e24f67597516f970f4fa06295c06d1"
+      },
+      {
+        "post_id": "gdelt_gkg_0a21f2d9c700e339",
+        "source": "gdelt_gkg",
+        "url": "https://www.greatlakesadvocate.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:45:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "0a21f2d9c700e339f6535114cee049bc01fc11ac3d68c894833598fdf464c8f9"
+      },
+      {
+        "post_id": "gdelt_gkg_eba197b8060549e2",
+        "source": "gdelt_gkg",
+        "url": "https://www.oberonreview.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "eba197b8060549e2b86ea4016104172516fb57a48362c108608817ef7664539b"
+      },
+      {
+        "post_id": "gdelt_gkg_47cba1e104b3bf6c",
+        "source": "gdelt_gkg",
+        "url": "https://www.inverelltimes.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "47cba1e104b3bf6c6ac5a9ff92e2df6daaa1984cfed7ffa8ced93d79e2843a3d"
+      },
+      {
+        "post_id": "gdelt_gkg_22060b72fa519111",
+        "source": "gdelt_gkg",
+        "url": "https://www.ulladullatimes.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "22060b72fa51911150f0660654c7d67253cb4c341216f1c56e1dd6f626a2796d"
+      },
+      {
+        "post_id": "gdelt_gkg_18b68c05c1518e1c",
+        "source": "gdelt_gkg",
+        "url": "https://www.nvi.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "18b68c05c1518e1c362c9a7367e9ceb2ef30aeec42e9b2627a363089039623d8"
+      },
+      {
+        "post_id": "gdelt_gkg_680c5f4b65458077",
+        "source": "gdelt_gkg",
+        "url": "https://www.dailyliberal.com.au/story/9241136/grave-danger-warning-for-bar-wars-youngest-soldiers/",
+        "title": "mike bush — Recruitment",
+        "published_at": "2026-05-06T10:30:00+00:00",
+        "language": "en",
+        "cluster_confidence": 1,
+        "content_hash": "680c5f4b65458077b93f46e6e9d6b58502b1169a1140aa4702497e5bbb36a394"
+      }
+    ]
+  },
+  "coordination_analysis": {
+    "signal_count": 0,
+    "signals": []
+  },
+  "ensemble_nvi": {
+    "note": "Ensemble NVI data not yet available. Run NVI cycle first."
+  },
+  "narrative_dna": {
+    "note": "DNA fingerprint not yet computed. Run DNA cycle first."
+  },
+  "dna_matches": {
+    "count": 0,
+    "matches": []
+  },
+  "amplification_graph": {
+    "metrics": {
+      "node_count": 24,
+      "edge_count": 238,
+      "clustering_coefficient": 0.834,
+      "average_path_length": 24,
+      "small_world_coefficient": 0.05,
+      "reciprocity": 0,
+      "edge_density": 0.431159,
+      "core_ratio": 0,
+      "topology_score": 0.35,
+      "is_coordination_topology": true,
+      "topology_signals": [
+        "high_clustering_coefficient",
+        "low_reciprocity",
+        "in_out_degree_anti_correlation"
+      ]
+    },
+    "node_count": 24,
+    "edge_count": 238
+  },
+  "integrity": {
+    "sha256": "658baacd3b2e0650338df157d0b50259c9c2a12b053b68740a1480638f55880c",
+    "hash_method": "SHA256 over JSON-serialized pack (sort_keys=True, ensure_ascii=False)",
+    "verification": "To verify: remove 'integrity' key, serialize with same params, compute SHA256"
+  }
+}
