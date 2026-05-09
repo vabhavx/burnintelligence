@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BurnTheLies NVI gate pipeline ground-truth fixtures",
+  "type": "object",
+  "required": ["fixtures"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version of the fixture file."
+    },
+    "description": {
+      "type": "string"
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "cluster_id",
+          "expected_verdict",
+          "expected_gates",
+          "expected_nvi_max"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "cluster_id": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Numeric cluster ID in narrative_clusters.id"
+          },
+          "expected_verdict": {
+            "type": "string",
+            "enum": [
+              "wire_service_with_rewrites",
+              "wire_service_identical",
+              "topic_cluster",
+              "small_sample_artifact",
+              "gdelt_batch_artifact",
+              "organic_viral_spread",
+              "normal_news_cycle",
+              "incoherent_narrative",
+              "coordination_likely",
+              "uncertain"
+            ],
+            "description": "High-level human verdict for this cluster."
+          },
+          "expected_gates": {
+            "type": "array",
+            "uniqueItems": true,
+            "description": "Gate IDs that should fire. Order does not matter; superset matches are tolerated unless expected_gates_exact is true.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "gdelt_batch_artifact",
+                "insufficient_evidence",
+                "dna_match",
+                "wire_service",
+                "ensemble_uncertainty",
+                "entity_concentration",
+                "narrative_coherence",
+                "organic_viral_spread",
+                "normal_news_cycle",
+                "confidence_threshold"
+              ]
+            }
+          },
+          "expected_gates_exact": {
+            "type": "boolean",
+            "default": false,
+            "description": "When true, the firing-gate set must equal expected_gates exactly."
+          },
+          "expected_nvi_max": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Final gated NVI must be <= this."
+          },
+          "expected_alert_suppressed": {
+            "type": "boolean",
+            "description": "Whether the confidence-threshold gate is expected to suppress the alert."
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

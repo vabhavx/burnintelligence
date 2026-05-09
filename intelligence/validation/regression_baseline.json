@@ -1,0 +1,1051 @@
+{
+  "version": "1.0",
+  "captured_at": "2026-05-07",
+  "description": "Snapshot of nvi_score and gates_applied produced by compute_nvi() for the top-100 active clusters by stored NVI. Regression mode fails if any cluster's gates_applied set differs OR nvi_score deviates by more than tolerance_nvi points.",
+  "tolerance_nvi": 5.0,
+  "clusters": [
+    {
+      "cluster_id": 31540,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31330,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30778,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 28097,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31928,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 27701,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28036,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31047,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30472,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 28896,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31213,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 27635,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30527,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30802,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31791,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30570,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31992,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 32277,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30510,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 28583,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29017,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31306,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31368,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31374,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31817,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31341,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 32245,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 28395,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31138,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28294,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31302,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29987,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31778,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31973,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30872,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 27998,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30948,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 27353,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30709,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 32637,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 27765,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30644,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30546,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31032,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28061,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28087,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31484,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29578,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31614,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 32362,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 32700,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31058,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31820,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30514,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29001,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28054,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28254,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29369,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29804,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31700,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28462,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30369,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 27944,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30838,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30555,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30984,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31682,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 28914,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31697,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 32290,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 28277,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29568,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 30983,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31612,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 29097,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31398,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28149,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 32097,
+      "nvi_score": 25.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ]
+    },
+    {
+      "cluster_id": 31774,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 27421,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 27928,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 28694,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29362,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29377,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29475,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29995,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30237,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30393,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30509,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30743,
+      "nvi_score": 35.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31510,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31516,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31524,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31542,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31577,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 31862,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 27698,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 29768,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30390,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    },
+    {
+      "cluster_id": 30520,
+      "nvi_score": 20.0,
+      "gates_applied": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ]
+    }
+  ]
+}

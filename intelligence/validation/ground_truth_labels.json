@@ -1,0 +1,350 @@
+{
+  "version": "1.1",
+  "description": "Seed fixtures for the v5 falsification gate pipeline. The first 5 entries (cluster_ids 5122, 6649, 19814, 26972, 31610) are the original spec-derived fixtures from the failure-analysis document \u2014 clusters 5122, 6649, 19814 are archived in the current DB and the harness reports them as insufficient_data. The remaining entries are tagged in their notes as `[source: regression_baseline_2026-05-07]` and were appended on 2026-05-07 by sampling the latest NVI snapshots for active clusters that exhibit each gate type. Their expected_gates and expected_nvi_max values reflect the system's current behaviour, not human-labeled ground truth \u2014 they exist to detect regressions in gate logic, not to certify correctness.",
+  "fixtures": [
+    {
+      "cluster_id": 5122,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "11 UK regional outlets publishing the same wire-service drug-bust story. v4.1 alerted at NVI 72.2 with disagreement=0.0. v5 wire_service gate must fire either via known-syndicators (UK regional domain list) or hash-diversity branch."
+    },
+    {
+      "cluster_id": 6649,
+      "expected_verdict": "topic_cluster",
+      "expected_gates": [
+        "insufficient_evidence",
+        "dna_match",
+        "entity_concentration"
+      ],
+      "expected_nvi_max": 35,
+      "expected_alert_suppressed": true,
+      "notes": "5 government articles spanning Spain, Slovakia, Eritrea, Poland, Moldova. Topic ('government') cluster, not narrative. v4.1 alerted at NVI 99 / disagreement=0.0. v5: small sample triggers insufficient_evidence + dna_match; near-zero entity overlap triggers entity_concentration."
+    },
+    {
+      "cluster_id": 19814,
+      "expected_verdict": "topic_cluster",
+      "expected_gates": [
+        "insufficient_evidence",
+        "dna_match",
+        "entity_concentration",
+        "ensemble_uncertainty"
+      ],
+      "expected_nvi_max": 35,
+      "expected_alert_suppressed": true,
+      "notes": "5 unrelated articles (hip-hop history, Armenian news, Irish politics). v4.1 alerted at NVI 100 with perfect ensemble agreement. v5: every small-cluster gate (insufficient_evidence, dna_match, ensemble_uncertainty) plus entity_concentration must fire."
+    },
+    {
+      "cluster_id": 26972,
+      "expected_verdict": "small_sample_artifact",
+      "expected_gates": [
+        "insufficient_evidence",
+        "dna_match"
+      ],
+      "expected_nvi_max": 40,
+      "expected_alert_suppressed": true,
+      "notes": "4-post cluster correctly rejected in v4.1 via the insufficient-evidence early-return path. v5: must continue to reject \u2014 gate 2 caps at 40, gate 3 (dna_match) caps at 35 if no DNA matches."
+    },
+    {
+      "cluster_id": 31610,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": false,
+      "notes": "64 posts from 57 distinct sources about 'Tax Ethnicity', all published within one hour. Unique content hashes (rewritten) but 85%+ embedding similarity. v4.1 alerted at NVI 71.7. v5 wire_service gate must fire via the hash-diversity branch (unique_hash_ratio > 0.90 AND embedding_similarity_mean > 0.80 AND source_diversity > 0.65 AND dna_match_count == 0)."
+    },
+    {
+      "cluster_id": 27810,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 30,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); routine news cycle. Snapshot NVI=25.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 31826,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 30,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; routine news cycle. Snapshot NVI=25.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 32392,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 30,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); routine news cycle. Snapshot NVI=25.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 32478,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 30,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; routine news cycle. Snapshot NVI=25.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 32668,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 30,
+      "expected_alert_suppressed": false,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; routine news cycle. Snapshot NVI=25.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 27820,
+      "expected_verdict": "small_sample_artifact",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ],
+      "expected_nvi_max": 40,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] dna_match (no strong DNA evidence); routine news cycle; small sample (9 posts). Snapshot NVI=35.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 28256,
+      "expected_verdict": "small_sample_artifact",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "normal_news_cycle"
+      ],
+      "expected_nvi_max": 40,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] dna_match (no strong DNA evidence); routine news cycle; small sample (6 posts). Snapshot NVI=35.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 27588,
+      "expected_verdict": "small_sample_artifact",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "insufficient_evidence",
+        "narrative_coherence",
+        "normal_news_cycle"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle; small sample (8 posts). Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 27895,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 28406,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 32727,
+      "expected_verdict": "incoherent_narrative",
+      "expected_gates": [
+        "narrative_coherence",
+        "normal_news_cycle"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": false,
+      "notes": "[source: regression_baseline_2026-05-07] low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 28442,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 28508,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 28947,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 29580,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 30458,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 30917,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 31065,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 31162,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 31194,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "dna_match",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; dna_match (no strong DNA evidence); low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 31258,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    },
+    {
+      "cluster_id": 31340,
+      "expected_verdict": "wire_service_with_rewrites",
+      "expected_gates": [
+        "confidence_threshold",
+        "narrative_coherence",
+        "normal_news_cycle",
+        "wire_service"
+      ],
+      "expected_nvi_max": 25,
+      "expected_alert_suppressed": true,
+      "notes": "[source: regression_baseline_2026-05-07] wire_service firing; low narrative_coherence; routine news cycle. Snapshot NVI=20.0; expected_gates and nvi cap captured from the latest nvi_snapshot, not from independent re-review."
+    }
+  ]
+}
