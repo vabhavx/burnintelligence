@@ -130,7 +130,7 @@ This system:
               ┌───────────────────────┐
               │   FASTAPI LAYER       │
               │                       │
-              │  /api/intelligence/   │
+              │  /api/                 │
               │    narratives         │
               │    narrative/:id      │
               │    evidence/:id       │
@@ -166,7 +166,7 @@ Every alert that clears the falsification pipeline can be exported as a **Berkel
 ```json
 {
   "metadata": {
-    "pack_version": "4.0.0",
+    "pack_version": "5.4.0",
     "standard": "Berkeley Protocol on Digital Open Source Investigations (2022)",
     "pack_id": "EP-39018-20260507094218"
   },

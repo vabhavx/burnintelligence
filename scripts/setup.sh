@@ -3,7 +3,7 @@
 # Usage:  chmod +x setup.sh && ./setup.sh
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-echo "=== Intelligence Engine v5.2 Setup ==="
+echo "=== Intelligence Engine v5.4 Setup ==="
 echo "Root: $ROOT"
 echo
 
@@ -42,7 +42,7 @@ echo "=== Setup complete ==="
 echo "Start the engine:"
 echo "  source venv/bin/activate"
 echo "  python3 -m intelligence.main continuous"
-echo "Then open: http://localhost:8000/dashboard"
+echo "Then open: http://localhost:8000"
 echo
 echo "Single-cycle run (no continuous mode):"
 echo "  python3 -m intelligence.main once"

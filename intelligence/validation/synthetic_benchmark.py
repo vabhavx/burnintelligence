@@ -1,9 +1,8 @@
 """
-Synthetic adversarial benchmark for the v5.2 falsification gate pipeline.
+Synthetic adversarial benchmark for the 18-gate falsification pipeline.
 
-Four gates, each catching a specific false-positive class with high
-empirical discrimination. This benchmark proves the gate logic is correct
-against hand-crafted adversarial scenarios.
+Evaluates gate logic correctness against hand-crafted adversarial scenarios.
+Each scenario tests a specific falsification or boost condition.
 
 Run with:
     python -m intelligence.validation.synthetic_benchmark
@@ -232,8 +231,14 @@ SCENARIOS: list[Scenario] = [
 
 def evaluate() -> dict:
     results = []
-    gate_universe = {"gdelt_batch_artifact", "insufficient_evidence",
-                     "single_source_cluster", "wire_service"}
+    gate_universe = {
+        "gdelt_batch_artifact", "content_noise", "insufficient_evidence",
+        "single_source_cluster", "wire_service", "dna_match",
+        "cross_language", "geographic_spread", "high_signal_topic",
+        "circadian_anomaly", "content_anomaly", "cross_cluster_velocity",
+        "ensemble_uncertainty", "entity_concentration", "narrative_coherence",
+        "organic_viral_spread", "normal_news_cycle", "confidence_threshold",
+    }
 
     tp = {g: 0 for g in gate_universe}
     fp = {g: 0 for g in gate_universe}
@@ -305,7 +310,7 @@ def evaluate() -> dict:
 
 def render_markdown(report: dict) -> str:
     lines = []
-    lines.append("# Synthetic Adversarial Benchmark — v5.2 Falsification Gates\n")
+    lines.append("# Synthetic Adversarial Benchmark — 18-Gate Falsification Pipeline\n")
     lines.append(
         f"**{report['scenarios_pass']} / {report['scenarios_total']} scenarios "
         f"correctly classified ({100 * report['accuracy']:.1f}% accuracy)**\n"

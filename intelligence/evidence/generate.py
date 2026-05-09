@@ -304,7 +304,7 @@ def generate_evidence_pack(db_conn, cluster_id: int) -> dict:
     # Assemble the pack
     pack = {
         "metadata": {
-            "pack_version": "4.0.0",
+            "pack_version": "5.4.0",
             "generator": "BurnTheLies Intelligence Engine",
             "generated_at": now,
             "standard": "Berkeley Protocol on Digital Open Source Investigations (2022)",

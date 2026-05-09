@@ -280,12 +280,12 @@ Key tables:
 FastAPI on port 8000. Key endpoints:
 
 ```
-GET  /api/intelligence/narratives     — List all narrative clusters
-GET  /api/intelligence/narrative/:id  — Single narrative with full detail
-GET  /api/intelligence/evidence/:id   — Evidence pack with gate trace
-GET  /api/intelligence/stats          — System statistics
-GET  /api/intelligence/health         — Pipeline health status
-GET  /api/health                      — Liveness check
+GET  /api/narratives              — List all narrative clusters
+GET  /api/narratives/:id          — Single narrative with full detail
+GET  /api/narratives/:id/evidence — Evidence pack with gate trace
+GET  /api/stats                   — System statistics
+GET  /api/health                  — Liveness check
+GET  /api/health/pipeline         — Pipeline health status
 ```
 
 The narratives endpoint supports filtering: `min_post_count`, `alert_level`, `language`, `region`, `category`, `source`. English feed includes "unknown" language articles since GDELT TLD-based language detection labels many English-language sites as "unknown."

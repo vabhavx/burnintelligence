@@ -477,7 +477,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="BurnTheLies Intelligence API",
     description="Real-time narrative manipulation detection with human-readable interpretation",
-    version="4.0.0",
+    version="5.4.0",
     lifespan=lifespan,
 )
 
@@ -506,7 +506,7 @@ intel_metrics.install(app)
 async def root():
     return {
         "service": "BurnTheLies Intelligence Engine",
-        "version": "4.0.0",
+        "version": "5.4.0",
         "status": "operational",
         "capabilities": [
             "narrative_detection", "coordination_signals", "confidence_intervals",

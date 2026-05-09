@@ -1,21 +1,44 @@
 """
-BurnTheLies Intelligence — Falsification Gate Pipeline (v5.3)
+BurnTheLies Intelligence — Falsification Gate Pipeline (v5.4)
 
-Six gates. The four source/timing gates from v5.2 are kept; two content-aware
-gates (entity_concentration + narrative_coherence) are restored to distinguish
-real coordination from topic-bag false positives.
+18 gates organized by type. The pipeline implements a Popperian falsification
+approach: each gate attempts to DISPROVE the narrative significance hypothesis
+rather than prove coordination (which is epistemologically impossible from
+open-source data alone). What survives all 18 falsification attempts is the
+residue — clusters that COULD be coordinated and merit human review.
 
-Real coordination shares named entities and tells the same story across outlets.
-Topic bags (99% of GDELT clusters) share a subject taxonomy but not people or
-narrative — entity overlap near zero, coherence < 0.22.
+Gate priority order (specificity and destructiveness):
 
-Gate priority order:
-    1.  gdelt_batch_artifact     terminal → NVI = 0
-    2.  insufficient_evidence    cap NVI 40/70 (post_count < 5 → 40, 5-9 → 70)
-    3.  single_source_cluster    cap NVI 15   (≤1 domain)
-    4.  wire_service             cap NVI 25   (syndication, not coordination)
-    5.  entity_concentration     cap NVI 35   (shared_entity_count ≤ 1 AND post_count ≥ 15)
-    6.  narrative_coherence      cap NVI 20   (coherence < 0.22)
+  Terminal (zeroes NVI immediately):
+    1.  gdelt_batch_artifact          → NVI = 0 (15-min GDELT batch cadence, not real event)
+
+  Suppression caps (structure-based):
+    2.  content_noise                 suppress_only (listicles, obituaries, classifieds)
+    3.  insufficient_evidence         cap 40/70 (<5 posts → 40, 5-9 → 70)
+    4.  single_source_cluster         cap 15 (1 domain or Shannon entropy <0.20)
+    5.  wire_service                  cap 20/25 (known syndicator or hash diversity)
+    6.  dna_match                     cap 25 (no DNA fingerprint matches, <20 posts)
+
+  Anomaly boosts (raise NVI floor):
+    7.  cross_language                floor 65 (3+ real languages)
+    8.  geographic_spread             floor 60 (locations in 3+ countries)
+    9.  high_signal_topic             floor 55 (disinformation/propaganda themes)
+   10.  circadian_anomaly             floor 50/65 (>40% posts during 1-5 AM UTC)
+   11.  content_anomaly               floor 50 (high density + negative tone + low self-ref)
+   12.  cross_cluster_velocity         floor 65/80 (DNA evidence across clusters)
+
+  Quality caps (content-based):
+   13.  ensemble_uncertainty          cap 35 (3 ensemble configs agree too perfectly)
+   14.  entity_concentration          cap 35 (≤1 shared entity across ≥15 posts)
+   15.  narrative_coherence           cap 20 (entity continuity + token Jaccard <0.22)
+   16.  organic_viral_spread          cap 30 (high mutation + high diversity)
+   17.  normal_news_cycle             cap 35 (low coordination + low burst + <15 posts)
+
+  Suppression:
+   18.  confidence_threshold          suppress_only (confidence <0.65)
+
+Final NVI = max(min(raw_nvi, strictest_cap), highest_floor)
+Boost gates can override cap gates. Real signal survives structural criticism.
 """
 
 from __future__ import annotations
